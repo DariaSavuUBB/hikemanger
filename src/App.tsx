@@ -1,7 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import Home from './components/HikesLists/HikesList';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,6 +32,9 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import HikesList from './components/HikesLists/HikesList';
+import { ItemProvider } from './components/HikeProvider';
+import HikeEdit from './components/HikeEdit/HikeEdit';
 
 setupIonicReact();
 
@@ -39,12 +42,12 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+        <ItemProvider>
+          <Route exact path="/" render={() => <Redirect to="/hikes" />}></Route>
+          <Route path="/hikes" component={HikesList}></Route>
+          <Route path="/hike" component={HikeEdit} exact={true}/>
+          <Route path="/hike/:id" component={HikeEdit} exact={true}/>
+        </ItemProvider>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

@@ -1,0 +1,18 @@
+.custom-input {
+    border-bottom: 1px solid black;
+    padding-left: 10px !important;
+  };
+
+.container {
+    padding: 10px !important;
+}
+
+.date-input{
+    border-bottom: 1px solid black;
+    padding-left: 10px !important;
+}
+
+.custom-padding
+{
+    padding: 10px !important;
+}
