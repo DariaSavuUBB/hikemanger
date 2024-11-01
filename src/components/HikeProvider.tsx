@@ -65,7 +65,7 @@ const reducer: (state: ItemsState, action: ActionProps) => ItemsState =
         const item = payload.item;
         const index = items.findIndex(it => it.id === item.id);
         if (index === -1) {
-          items.splice(0, 0, item);
+          items.push(item);
         } else {
           items[index] = item;
         }
